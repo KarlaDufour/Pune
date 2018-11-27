@@ -15,7 +15,6 @@ import { HomePage } from '../pages/home/home';
 import { TempPage } from '../pages/temp/temp';
 import { NivelPage } from '../pages/nivel/nivel';
 import { PresionPage } from '../pages/presion/presion';
-import { PrefixNot } from '@angular/compiler';
 
 export const config  ={
   apiKey: "AIzaSyB4vEP-vHOlmILDK8-tG6J5RDvUgCFeGHk",

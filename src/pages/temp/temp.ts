@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the TempPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs-compat';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @IonicPage()
 @Component({
@@ -15,7 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TempPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  tempe: Observable<any[]>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public angularDB: AngularFireDatabase) {
+    this.tempe = angularDB.list('sensor').snapshotChanges();
   }
 
   ionViewDidLoad() {

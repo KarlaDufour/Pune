@@ -31,9 +31,9 @@ var HomePage = /** @class */ (function () {
         this.tab1Root = __WEBPACK_IMPORTED_MODULE_2__temp_temp__["a" /* TempPage */];
         this.tab2Root = __WEBPACK_IMPORTED_MODULE_3__nivel_nivel__["a" /* NivelPage */];
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_4__presion_presion__["a" /* PresionPage */];
+        this.currentUser = this.navParams.get('user');
     }
     HomePage.prototype.ionViewDidLoad = function () {
-        this.loginUser = this.navParams.get('user');
         console.log('ionViewDidLoad HomePage');
     };
     HomePage.prototype.openModal = function () {
@@ -124,6 +124,7 @@ var LoginPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TempPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__ = __webpack_require__(243);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,25 +136,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the TempPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 var TempPage = /** @class */ (function () {
-    function TempPage(navCtrl, navParams) {
+    function TempPage(navCtrl, navParams, angularDB) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.angularDB = angularDB;
+        this.tempe = angularDB.list('sensor').snapshotChanges();
     }
     TempPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad TempPage');
     };
     TempPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="content" style="background:#55F050" (click)="status1()">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">23°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" (click)="status2()">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">20°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" style="background:#F0E434" (click)="status3()">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">25°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
+            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="content" style="background:#55F050" (click)="status1()">\n          <ion-card-content> \n              <h1 style="font-size: 15vw;">{{tempe.temp}}°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" (click)="status2()">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">20°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" style="background:#F0E434" (click)="status3()">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">25°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]])
     ], TempPage);
     return TempPage;
 }());
@@ -310,13 +308,13 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 292:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(426);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -324,7 +322,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 425:
+/***/ 426:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -333,11 +331,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(487);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(497);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_login_login__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_home__ = __webpack_require__(131);
@@ -365,12 +363,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var config = {
-    apiKey: "AIzaSyA0YVV3q9TMK0ykSV4qPltAVcYuyujg7q4",
-    authDomain: "ejemplo-5006c.firebaseapp.com",
-    databaseURL: "https://ejemplo-5006c.firebaseio.com",
-    projectId: "ejemplo-5006c",
-    storageBucket: "ejemplo-5006c.appspot.com",
-    messagingSenderId: "770609212194"
+    apiKey: "AIzaSyB4vEP-vHOlmILDK8-tG6J5RDvUgCFeGHk",
+    authDomain: "proyectoune-b3ff3.firebaseapp.com",
+    databaseURL: "https://proyectoune-b3ff3.firebaseio.com",
+    projectId: "proyectoune-b3ff3",
+    storageBucket: "proyectoune-b3ff3.appspot.com",
+    messagingSenderId: "586330331937"
 };
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -398,7 +396,7 @@ var AppModule = /** @class */ (function () {
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__angular_fire__["a" /* AngularFireModule */].initializeApp(config),
                 __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__["b" /* AngularFireAuthModule */],
-                __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["a" /* AngularFireDatabaseModule */]
+                __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__["b" /* AngularFireDatabaseModule */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
@@ -430,8 +428,8 @@ var AppModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(285);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(289);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -479,5 +477,5 @@ var MyApp = /** @class */ (function () {
 
 /***/ })
 
-},[292]);
+},[293]);
 //# sourceMappingURL=main.js.map

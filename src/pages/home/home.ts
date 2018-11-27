@@ -16,14 +16,13 @@ export class HomePage {
   tab2Root = NivelPage;
   tab3Root = PresionPage;
 
-  loginUser: string;
+  currentUser;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.currentUser = this.navParams.get('user');
 
   }
   ionViewDidLoad(){
-    this.loginUser = this.navParams.get('user');
-
     console.log('ionViewDidLoad HomePage');
   }
   openModal(){
