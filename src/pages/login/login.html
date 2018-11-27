@@ -1,0 +1,23 @@
+<ion-content padding>
+
+
+  <ion-list>
+    <form [formGroup]="LoginForm" (ngSubmit)="login()">
+      <ion-item class="no-lines">
+        <h1>Iniciar Sesión</h1>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Correo</ion-label>
+        <ion-input type="text" formControlName="correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" formControlName="contra"></ion-input>
+      </ion-item>
+      <br><br>
+      <button ion-button round block outline type="submit" [disabled]="!LoginForm.valid">
+        Entrar
+      </button>
+    </form>
+  </ion-list>
+</ion-content>

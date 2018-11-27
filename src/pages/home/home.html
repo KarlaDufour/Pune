@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-title>{{loginUser}}</ion-title>
+      <ion-buttons end><button ion-button (click)="openModal()">
+          <ion-icon name="settings"></ion-icon>
+        </button></ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-tabs>
+      <ion-tab [root]="tab1Root" tabTitle="Temperatura"></ion-tab>
+      <ion-tab [root]="tab2Root" tabTitle="Nivel"></ion-tab>
+      <ion-tab [root]="tab3Root" tabTitle="Presion"></ion-tab>
+    </ion-tabs>
+</ion-content>
