@@ -139,17 +139,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var TempPage = /** @class */ (function () {
     function TempPage(navCtrl, navParams, angularDB) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.angularDB = angularDB;
-        this.tempe = angularDB.list('sensor').snapshotChanges();
+        this.tempRef = angularDB.list('sensor', function (ref) { return ref.limitToLast(1); }).valueChanges();
+        this.tempRef.subscribe(function (dato) {
+            dato.map(function (temp) {
+                console.log('S1: ' + temp.temp);
+                _this.lastTemp = temp.temp;
+            });
+        });
+        this.tempRef = angularDB.list('sensor2', function (ref) { return ref.limitToLast(1); }).valueChanges();
+        this.tempRef.subscribe(function (dato) {
+            dato.map(function (temp) {
+                console.log('S2: ' + temp.temp);
+                _this.lastTemp2 = temp.temp;
+            });
+        });
+        this.tempRef = angularDB.list('sensor3', function (ref) { return ref.limitToLast(1); }).valueChanges();
+        this.tempRef.subscribe(function (dato) {
+            dato.map(function (temp) {
+                console.log('S3: ' + temp.temp);
+                _this.lastTemp3 = temp.temp;
+            });
+        });
     }
+    ;
+    ;
     TempPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TempPage');
     };
     TempPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="content" style="background:#55F050" (click)="status1()">\n          <ion-card-content> \n              <h1 style="font-size: 15vw;">{{tempe.temp}}°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" (click)="status2()">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">20°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" style="background:#F0E434" (click)="status3()">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">25°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
+            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="content" style="background:#55F050" (click)="status1()">\n          <ion-card-content> \n              <h1 style="font-size: 15vw;">{{lastTemp}}°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" (click)="status2()">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">{{lastTemp2}}°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="content" style="background:#F0E434" (click)="status3()">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">{{lastTemp3}}°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]])
     ], TempPage);
