@@ -10,12 +10,21 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class NivelPage {
 
-  nivelRef : Observable<any[]>;
-  lastNiv : any;
+  nivelRef: Observable<any[]>;
+  lastNiv: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
-    this.nivelRef = angularDB.list('ultrasonic', ref => ref.limitToLast(1)).valueChanges();
 
+    this.nivelRef = angularDB.list('ultrasonic', ref => ref.limitToLast(1)).valueChanges();
+    this.nivelRef.subscribe(dato => {
+      dato.map(niv => {
+        if (niv.niv <= 60) {
+          
+        }
+        this.nivelRef = niv.niv;
+
+      });
+    });
   }
 
   ionViewDidLoad() {
