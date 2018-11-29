@@ -7,9 +7,9 @@ webpackJsonp([5],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__temp_temp__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nivel_nivel__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__presion_presion__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__temp_temp__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nivel_nivel__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__presion_presion__ = __webpack_require__(161);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -52,7 +52,7 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 157:
+/***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60,7 +60,7 @@ var HomePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_auth__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(131);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -121,7 +121,7 @@ var LoginPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 158:
+/***/ 159:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -129,7 +129,7 @@ var LoginPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__ = __webpack_require__(134);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -246,7 +246,7 @@ var TempPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 159:
+/***/ 160:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -254,7 +254,7 @@ var TempPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__ = __webpack_require__(134);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -277,12 +277,39 @@ var NivelPage = /** @class */ (function () {
         this.localNot = localNot;
         this.nivelRef = angularDB.list('ultrasonic', function (ref) { return ref.limitToLast(1); }).valueChanges();
         this.nivelRef.subscribe(function (dato) {
-            dato.map(function (niv) {
-                console.log('Nv: ' + niv.niv);
-                if (niv.niv <= 60) {
+            dato.map(function (dist) {
+                console.log('Nv: ' + dist.dist);
+                if (dist.dist <= 60) {
+                    _this.localNot.schedule([
+                        { id: 1, title: 'Nivel 2: Nivel estable del tanque' }
+                    ]);
                     _this.lvl1 = "#C0C0C0";
                 }
-                _this.lastNiv = niv.niv;
+                else if (dist.dist <= 90) {
+                    _this.localNot.schedule([
+                        { id: 1, title: '¡Nivel 3! Nivel medio del tanque' }
+                    ]);
+                    _this.lvl1 = "#C0C0C0";
+                    _this.lvl2 = "#C0C0C0";
+                }
+                else if (dist.dist <= 120) {
+                    _this.localNot.schedule([
+                        { id: 1, title: '¡Nivel 4! Favor de revisar el tanque' }
+                    ]);
+                    _this.lvl1 = "#C0C0C0";
+                    _this.lvl2 = "#C0C0C0";
+                    _this.lvl3 = "#C0C0C0";
+                }
+                else if (dist.dist <= 150) {
+                    _this.localNot.schedule([
+                        { id: 1, title: '¡Nivel 5! Favor de revisar el tanque' }
+                    ]);
+                    _this.lvl1 = "#C0C0C0";
+                    _this.lvl2 = "#C0C0C0";
+                    _this.lvl3 = "#C0C0C0";
+                    _this.lvl4 = "#C0C0C0";
+                }
+                _this.lastNiv = dist.dist;
             });
         });
     }
@@ -290,7 +317,7 @@ var NivelPage = /** @class */ (function () {
     };
     NivelPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <br>\n    <h1>{{lastNiv}} cm</h1>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col class="elementscard" col-2>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
+            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <br>\n    <h1>{{lastNiv}} cm</h1>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _d || Object])
     ], NivelPage);
@@ -302,7 +329,7 @@ var NivelPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 160:
+/***/ 161:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -347,7 +374,7 @@ var PresionPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 199:
+/***/ 200:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -360,11 +387,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 199;
+webpackEmptyAsyncContext.id = 200;
 
 /***/ }),
 
-/***/ 240:
+/***/ 241:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -400,7 +427,7 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 240;
+webpackAsyncContext.id = 241;
 module.exports = webpackAsyncContext;
 
 /***/ }),
@@ -431,15 +458,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_fire_database__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_local_notifications__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_local_notifications__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__(498);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_login_login__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_login_login__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_temp_temp__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_nivel_nivel__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_presion_presion__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_temp_temp__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_nivel_nivel__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_presion_presion__ = __webpack_require__(161);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -531,7 +558,7 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_login_login__ = __webpack_require__(158);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs-compat';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { last } from 'rxjs-compat/operator/last';
 import { LocalNotifications } from "@ionic-native/local-notifications";
 
 @IonicPage()
@@ -25,12 +26,39 @@ export class NivelPage {
 
     this.nivelRef = angularDB.list('ultrasonic', ref => ref.limitToLast(1)).valueChanges();
     this.nivelRef.subscribe(dato => {
-      dato.map(niv => {
-        console.log('Nv: ' + niv.niv)
-        if (niv.niv <= 60) {
-          this.lvl1 = "#C0C0C0";
+      dato.map(dist => {
+        console.log('Nv: ' + dist.dist);
+        if (dist.dist <= 60) {
+          this.localNot.schedule([
+            {id: 1, title: 'Nivel 2: Nivel estable del tanque'}
+          ]);
+          this.lvl1 = "#C0C0C0"
+        }else
+        if (dist.dist <= 90){
+          this.localNot.schedule([
+            {id: 1, title: '¡Nivel 3! Nivel medio del tanque'}
+          ]);
+          this.lvl1 = "#C0C0C0"
+          this.lvl2 = "#C0C0C0"
+        }else
+        if (dist.dist <= 120){
+          this.localNot.schedule([
+            {id: 1, title: '¡Nivel 4! Favor de revisar el tanque'}
+          ]);
+          this.lvl1 = "#C0C0C0"
+          this.lvl2 = "#C0C0C0"
+          this.lvl3 = "#C0C0C0"
+        }else
+        if (dist.dist <= 150){
+          this.localNot.schedule([
+            {id: 1, title: '¡Nivel 5! Favor de revisar el tanque'}
+          ]);
+          this.lvl1 = "#C0C0C0"
+          this.lvl2 = "#C0C0C0"
+          this.lvl3 = "#C0C0C0"
+          this.lvl4 = "#C0C0C0"
         }
-        this.lastNiv = niv.niv;
+        this.lastNiv = dist.dist;
       });
     });
 
