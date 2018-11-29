@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { LocalNotifications } from "@ionic-native/local-notifications";
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -53,6 +54,7 @@ export const config  ={
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

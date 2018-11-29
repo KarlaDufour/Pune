@@ -16,10 +16,10 @@ export class HomePage {
   tab2Root = NivelPage;
   tab3Root = PresionPage;
 
-  currentUser;
+  loginUser;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.currentUser = this.navParams.get('user');
+    this.loginUser = this.navParams.get('user');
 
   }
   ionViewDidLoad(){

@@ -1,3 +1,25 @@
+
+$generalColor: rgb(3, 3, 78); 
+
 page-nivel {
 
+}
+.elementscard{
+
+}
+.card1, .card2, .card3, .card4, .card5{
+    height: 70px;
+    padding-bottom: 80px;      
+}
+.card1 {
+    background-color: lighten($generalColor, 65%);   
+}
+.card2 {
+    background-color: lighten($generalColor, 50%);   
+}.card3 {
+    background-color: lighten($generalColor, 35%);   
+}.card4 {
+    background-color: lighten($generalColor, 20%);   
+}.card5 {
+    background-color: lighten($generalColor, 0%);   
 }

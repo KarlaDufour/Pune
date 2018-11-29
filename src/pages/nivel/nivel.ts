@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the NivelPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs-compat';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @IonicPage()
 @Component({
@@ -15,7 +10,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NivelPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  nivelRef : Observable<any[]>;
+  lastNiv : any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
+    this.nivelRef = angularDB.list('ultrasonic', ref => ref.limitToLast(1)).valueChanges();
+
   }
 
   ionViewDidLoad() {

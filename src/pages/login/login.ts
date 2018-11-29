@@ -30,7 +30,11 @@ export class LoginPage {
       loader.dismiss();
       currentUser = result.user.uid;
       window.localStorage.setItem('CurrentUser', currentUser);
-      this.navCtrl.setRoot(HomePage);
+      var data = {
+        user: result.user.email,
+        lastLogin: result.user.metadata.lastSignInTime
+      }
+      this.navCtrl.setRoot(HomePage, data);
     })
   }
 }
