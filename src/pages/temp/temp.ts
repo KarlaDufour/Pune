@@ -34,19 +34,19 @@ export class TempPage {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
-          this.cardColor2 = "#99FFFF";
+          this.cardColor1 = "#99FFFF";
         }
         if (temp.temp >= 27){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp}
           ]);
-          this.cardColor2 = "#FF9933"
+          this.cardColor1 = "#FF9933"
         }
         if (temp.temp >= 30){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp}
           ]);
-          this.cardColor3 = "#FF0000";
+          this.cardColor1 = "#FF0000";
         }
         this.lastTemp = temp.temp;
       });
@@ -73,7 +73,7 @@ export class TempPage {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp}
           ]);
-          this.cardColor3 = "#FF0000";
+          this.cardColor2 = "#FF0000";
         }
         this.lastTemp2 = temp.temp;
       });

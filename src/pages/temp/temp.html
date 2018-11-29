@@ -3,21 +3,21 @@
   <ion-grid>
     <ion-row class="Row">
 
-        <ion-card class="color-card" (click)="status1()" [ngStyle]="{'background-color':cardColor1}">
+        <ion-card class="color-card" [ngStyle]="{'background-color':cardColor1}">
           <ion-card-content> 
               <h1 style="font-size: 15vw;">{{lastTemp}}°C</h1>
               <h1 text-right>Sensor 1</h1>
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="color-card" (click)="status2()" [ngStyle]="{'background-color':cardColor2}">
+        <ion-card class="color-card" [ngStyle]="{'background-color':cardColor2}">
           <ion-card-content>
               <h1 style="font-size: 15vw;">{{lastTemp2}}°C</h1>
               <h1 text-right>Sensor 2</h1>
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="color-card" (click)="status3()" [ngStyle]="{'background-color':cardColor3}">
+        <ion-card class="color-card" [ngStyle]="{'background-color':cardColor3}">
           <ion-card-content >
               <h1 style="font-size: 15vw;">{{lastTemp3}}°C</h1>
               <h1 text-right>Sensor 3</h1>

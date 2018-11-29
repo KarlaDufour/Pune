@@ -158,19 +158,19 @@ var TempPage = /** @class */ (function () {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
-                    _this.cardColor2 = "#99FFFF";
+                    _this.cardColor1 = "#99FFFF";
                 }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
-                    _this.cardColor2 = "#FF9933";
+                    _this.cardColor1 = "#FF9933";
                 }
                 if (temp.temp >= 30) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
                     ]);
-                    _this.cardColor3 = "#FF0000";
+                    _this.cardColor1 = "#FF0000";
                 }
                 _this.lastTemp = temp.temp;
             });
@@ -196,7 +196,7 @@ var TempPage = /** @class */ (function () {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
                     ]);
-                    _this.cardColor3 = "#FF0000";
+                    _this.cardColor2 = "#FF0000";
                 }
                 _this.lastTemp2 = temp.temp;
             });
@@ -234,7 +234,7 @@ var TempPage = /** @class */ (function () {
     };
     TempPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="color-card" (click)="status1()" [ngStyle]="{\'background-color\':cardColor1}">\n          <ion-card-content> \n              <h1 style="font-size: 15vw;">{{lastTemp}}°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="color-card" (click)="status2()" [ngStyle]="{\'background-color\':cardColor2}">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">{{lastTemp2}}°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="color-card" (click)="status3()" [ngStyle]="{\'background-color\':cardColor3}">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">{{lastTemp3}}°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
+            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="color-card" [ngStyle]="{\'background-color\':cardColor1}">\n          <ion-card-content> \n              <h1 style="font-size: 15vw;">{{lastTemp}}°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="color-card" [ngStyle]="{\'background-color\':cardColor2}">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">{{lastTemp2}}°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="color-card" [ngStyle]="{\'background-color\':cardColor3}">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">{{lastTemp3}}°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _d || Object])
     ], TempPage);
@@ -254,6 +254,7 @@ var TempPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__ = __webpack_require__(251);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -266,28 +267,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var NivelPage = /** @class */ (function () {
-    function NivelPage(navCtrl, navParams, angularDB) {
+    function NivelPage(navCtrl, navParams, angularDB, localNot) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.angularDB = angularDB;
+        this.localNot = localNot;
         this.nivelRef = angularDB.list('ultrasonic', function (ref) { return ref.limitToLast(1); }).valueChanges();
         this.nivelRef.subscribe(function (dato) {
             dato.map(function (niv) {
+                console.log('Nv: ' + niv.niv);
+                if (niv.niv <= 60) {
+                    _this.lvl1 = "#C0C0C0";
+                }
+                _this.lastNiv = niv.niv;
             });
         });
     }
     NivelPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NivelPage');
     };
     NivelPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col class="elementscard" col-2>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
+            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <br>\n    <h1>{{lastNiv}} cm</h1>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col class="elementscard" col-2>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _d || Object])
     ], NivelPage);
     return NivelPage;
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=nivel.js.map
