@@ -158,18 +158,19 @@ var TempPage = /** @class */ (function () {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
-                    _this.cardColor1 = "blue";
+                    _this.cardColor2 = "#99FFFF";
                 }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
+                    _this.cardColor2 = "#FF9933";
                 }
                 if (temp.temp >= 30) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
                     ]);
-                    _this.cardColor1 = "red";
+                    _this.cardColor3 = "#FF0000";
                 }
                 _this.lastTemp = temp.temp;
             });
@@ -183,18 +184,19 @@ var TempPage = /** @class */ (function () {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
-                    _this.cardColor2 = "blue";
+                    _this.cardColor2 = "#99FFFF";
                 }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
+                    _this.cardColor2 = "#FF9933";
                 }
                 if (temp.temp >= 30) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
                     ]);
-                    _this.cardColor2 = "red";
+                    _this.cardColor3 = "#FF0000";
                 }
                 _this.lastTemp2 = temp.temp;
             });
@@ -208,18 +210,19 @@ var TempPage = /** @class */ (function () {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
-                    _this.cardColor3 = "blue";
+                    _this.cardColor3 = "#99FFFF";
                 }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
+                    _this.cardColor3 = "#FF9933";
                 }
                 if (temp.temp >= 30) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
                     ]);
-                    _this.cardColor3 = "red";
+                    _this.cardColor3 = "#FF0000";
                 }
                 _this.lastTemp3 = temp.temp;
             });
@@ -265,16 +268,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var NivelPage = /** @class */ (function () {
     function NivelPage(navCtrl, navParams, angularDB) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.angularDB = angularDB;
         this.nivelRef = angularDB.list('ultrasonic', function (ref) { return ref.limitToLast(1); }).valueChanges();
         this.nivelRef.subscribe(function (dato) {
             dato.map(function (niv) {
-                if (niv.niv <= 60) {
-                }
-                _this.nivelRef = niv.niv;
             });
         });
     }
@@ -283,11 +282,12 @@ var NivelPage = /** @class */ (function () {
     };
     NivelPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col class="elementscard" col-2>\n        <ion-card class="card1">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
+            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col class="elementscard" col-2>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object])
     ], NivelPage);
     return NivelPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=nivel.js.map

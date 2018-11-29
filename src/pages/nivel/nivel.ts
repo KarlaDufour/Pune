@@ -13,16 +13,18 @@ export class NivelPage {
   nivelRef: Observable<any[]>;
   lastNiv: any;
 
+  lvl1;
+  lvl2;
+  lvl3;
+  lvl4;
+  lvl5;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
 
     this.nivelRef = angularDB.list('ultrasonic', ref => ref.limitToLast(1)).valueChanges();
     this.nivelRef.subscribe(dato => {
       dato.map(niv => {
-        if (niv.niv <= 60) {
-          
-        }
-        this.nivelRef = niv.niv;
-
+        
       });
     });
   }

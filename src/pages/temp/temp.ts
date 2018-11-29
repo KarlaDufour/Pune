@@ -15,9 +15,11 @@ export class TempPage {
   tempRef: Observable<any[]>;
   tempRef2: Observable<any[]>;;
   tempRef3: Observable<any[]>;;
+
   lastTemp: any;
   lastTemp2: any;
   lastTemp3: any;
+
   cardColor1;
   cardColor2;
   cardColor3;
@@ -32,18 +34,19 @@ export class TempPage {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
-          this.cardColor1 = "blue"
+          this.cardColor2 = "#99FFFF";
         }
         if (temp.temp >= 27){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp}
           ]);
+          this.cardColor2 = "#FF9933"
         }
         if (temp.temp >= 30){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp}
           ]);
-          this.cardColor1 = "red"
+          this.cardColor3 = "#FF0000";
         }
         this.lastTemp = temp.temp;
       });
@@ -58,18 +61,19 @@ export class TempPage {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
-          this.cardColor2 = "blue";
+          this.cardColor2 = "#99FFFF";
         }
         if (temp.temp >= 27){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp}
           ]);
+          this.cardColor2 = "#FF9933"
         }
         if (temp.temp >= 30){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp}
           ]);
-          this.cardColor2 = "red";
+          this.cardColor3 = "#FF0000";
         }
         this.lastTemp2 = temp.temp;
       });
@@ -84,18 +88,19 @@ export class TempPage {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
-          this.cardColor3 = "blue";
+          this.cardColor3 = "#99FFFF";
         }
         if (temp.temp >= 27){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp}
           ]);
+          this.cardColor3 = "#FF9933"
         }
         if (temp.temp >= 30){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp}
           ]);
-          this.cardColor3 = "red";
+          this.cardColor3 = "#FF0000";
         }
         this.lastTemp3 = temp.temp;
       });
