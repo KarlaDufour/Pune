@@ -5,13 +5,36 @@ page-temp {
 $second: #fa709a;
 $first: #fee140;
 
-
-
 ion-card {
   border-radius: 10px !important;
 }
-
+.card-content-md {
+  padding: 0px 16px;
+}
 .color-card {
+  .wrapper{
+    display: flex;
+    align-items: center;
+  }
+  .temp-prom-content {
+    display: inline-block;
+    width: 61%;
+    position: relative;
+  }
+  img {
+    display: inline;
+    width: 40%;
+  }
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      padding: 20px;
+    }
+  }
+
   h1,
   h2 {
     color: white !important;
@@ -35,38 +58,45 @@ ion-card {
   padding: 10px 0;
 }
 
-
-.tempPromWarning{
-    background: linear-gradient(to left, #df9960 0%, #ee7f17 100%);
+.tempPromWarning {
+  background: linear-gradient(to left, #edb07e 0%, #ee7f17 100%);
 }
 
-.tempPromOk{
-    background: linear-gradient(to left, #77f6be 0%, #3cba92 100%);
+.tempPromOk {
+  background: linear-gradient(to left, #77f6be 0%, #3cba92 100%);
 }
 
-.tempPromUp{
-    background: linear-gradient(to left, #fee140 0%, #fa709a 100%);
+.tempPromUp {
+  background: linear-gradient(to left, #fee140 0%, #fa709a 100%);
 }
 
-.tempPromDown{
-    background: linear-gradient(to left, #488aff 0%, #00c6fb 100%);
+.tempPromDown {
+  background: linear-gradient(to left, #488aff 0%, #00c6fb 100%);
 }
 
-
-.tempWarning{
-    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #df9960, #ee7f17);
+.tempWarning {
+  background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #edb07e, #ee7f17);
 }
 
-.tempOk{
-    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #77f6be, #3cba92);
+.tempInit{
+  background-image: linear-gradient(white, white),
+  radial-gradient(circle at top left, #d4d4d4, #555555);
 }
 
-.tempUp{
-    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #fee140, #fa709a);
+.tempOk {
+  background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #77f6be, #3cba92);
 }
 
-.tempDown{
-    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #488aff, #00c6fb);
+.tempUp {
+  background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #fee140, #fa709a);
+}
+
+.tempDown {
+  background-image: linear-gradient(white, white),
+    radial-gradient(circle at top left, #488aff, #00c6fb);
 }
 
 .btn {
@@ -80,4 +110,61 @@ ion-card {
 }
 ion-card {
   border-radius: 20px;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
 }

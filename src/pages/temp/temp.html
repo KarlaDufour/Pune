@@ -3,12 +3,19 @@
   <ion-grid>
     <ion-row justify-content-around>
       <ion-col col-12 col-sm>
-
         <ion-card>
           <ion-card-content [className]="'color-card card-content card-content-md ' + cardColorProm">
-            <h1>Temperatura</h1>
-            <h1><b>{{promedio}}°C</b></h1>
-            <h2>Promedio</h2>
+            <div *ngIf="promedio" class="wrapper">
+              <div class="temp-prom-content">
+                <h1>Temperatura</h1>
+                <h1><b>{{promedio}}°C</b></h1>
+                <h2>Promedio</h2>
+              </div>
+              <img [src]="'assets/imgs/'+assetTemp" class="animated bounceIn">
+            </div>
+            <div *ngIf="!promedio" class="loading">
+              <img src="assets/imgs/loading.gif" alt="">
+            </div>
           </ion-card-content>
         </ion-card>
 
