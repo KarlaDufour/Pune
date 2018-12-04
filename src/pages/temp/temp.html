@@ -5,14 +5,13 @@
       <ion-col col-12 col-sm>
 
         <ion-card>
-          <ion-card-content class="color-card">
+          <ion-card-content [className]="'color-card card-content card-content-md ' + cardColorProm">
             <h1>Temperatura</h1>
             <h1><b>{{promedio}}°C</b></h1>
             <h2>Promedio</h2>
           </ion-card-content>
         </ion-card>
 
-        
         <br>
 
         <ion-card>

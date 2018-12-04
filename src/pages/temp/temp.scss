@@ -16,7 +16,6 @@ ion-card {
   h2 {
     color: white !important;
   }
-  background: linear-gradient(to left, $first 0%, $second 100%);
 }
 
 .circle {
@@ -37,6 +36,23 @@ ion-card {
 }
 
 
+.tempPromWarning{
+    background: linear-gradient(to left, #df9960 0%, #ee7f17 100%);
+}
+
+.tempPromOk{
+    background: linear-gradient(to left, #77f6be 0%, #3cba92 100%);
+}
+
+.tempPromUp{
+    background: linear-gradient(to left, #fee140 0%, #fa709a 100%);
+}
+
+.tempPromDown{
+    background: linear-gradient(to left, #488aff 0%, #00c6fb 100%);
+}
+
+
 .tempWarning{
     background-image: linear-gradient(white, white), radial-gradient(circle at top left, #df9960, #ee7f17);
 }
@@ -50,7 +66,7 @@ ion-card {
 }
 
 .tempDown{
-    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #00c6fb, #00c6fb);
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #488aff, #00c6fb);
 }
 
 .btn {

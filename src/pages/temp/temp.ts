@@ -22,6 +22,7 @@ export class TempPage {
   cardColor1;
   cardColor2;
   cardColor3;
+  cardColorProm;
 
   promedio: number;
 
@@ -126,6 +127,19 @@ export class TempPage {
 
   calculateAverageTemp(t1, t2, t3) {
     this.promedio = Math.round((t1 + t2 + t3) / 3);
+
+    if (this.promedio <= 9) {
+      this.cardColorProm = "tempPromDown";
+    }
+    if (this.promedio >= 10) {
+      this.cardColorProm = "tempPromOk";
+    }
+    if (this.promedio >= 27) {
+      this.cardColorProm = "tempPromWarning"
+    }
+    if (this.promedio >= 30) {
+      this.cardColorProm = "tempPromUp";
+    }
   }
  
 
