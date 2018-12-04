@@ -1,0 +1,67 @@
+page-temp {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+$second: #fa709a;
+$first: #fee140;
+
+
+
+ion-card {
+  border-radius: 10px !important;
+}
+
+.color-card {
+  h1,
+  h2 {
+    color: white !important;
+  }
+  background: linear-gradient(to left, $first 0%, $second 100%);
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border: double 8px transparent;
+  border-radius: 19px;
+
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.sensor-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+
+.tempWarning{
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #df9960, #ee7f17);
+}
+
+.tempOk{
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #77f6be, #3cba92);
+}
+
+.tempUp{
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #fee140, #fa709a);
+}
+
+.tempDown{
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #00c6fb, #00c6fb);
+}
+
+.btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: auto;
+}
+.s1 {
+  vertical-align: baseline;
+}
+ion-card {
+  border-radius: 20px;
+}

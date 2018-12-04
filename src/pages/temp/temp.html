@@ -1,0 +1,41 @@
+<ion-content>
+
+  <ion-grid>
+    <ion-row justify-content-around>
+      <ion-col col-12 col-sm>
+
+        <ion-card>
+          <ion-card-content class="color-card">
+            <h1>Temperatura</h1>
+            <h1><b>{{promedio}}°C</b></h1>
+            <h2>Promedio</h2>
+          </ion-card-content>
+        </ion-card>
+
+        <br>
+
+        <ion-card>
+          <ion-card-content>
+            <div class="sensor-card">
+              <div class="circle" [className]="'circle ' + cardColor1"></div>
+              <h2>Sensor 1</h2>
+              <h3><b>{{lastTemp}}° C</b></h3>
+            </div>
+            <div class="sensor-card">
+              <div class="circle" [className]="'circle ' + cardColor2"></div>
+              <h2>Sensor 1</h2>
+              <h3><b>{{lastTemp2}}° C</b></h3>
+            </div>
+            <div class="sensor-card">
+              <div class="circle" [className]="'circle ' + cardColor3"></div>
+              <h2>Sensor 1</h2>
+              <h3><b>{{lastTemp3}}° C</b></h3>
+            </div>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
