@@ -160,6 +160,9 @@ var TempPage = /** @class */ (function () {
                     ]);
                     _this.cardColor1 = "#99FFFF";
                 }
+                if (temp.temp >= 10) {
+                    _this.cardColor1 = "#DDD453";
+                }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
@@ -185,6 +188,9 @@ var TempPage = /** @class */ (function () {
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
                     ]);
                     _this.cardColor2 = "#99FFFF";
+                }
+                if (temp.temp >= 10) {
+                    _this.cardColor2 = "#DDD453";
                 }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
@@ -212,6 +218,9 @@ var TempPage = /** @class */ (function () {
                     ]);
                     _this.cardColor3 = "#99FFFF";
                 }
+                if (temp.temp >= 10) {
+                    _this.cardColor3 = "#DDD453";
+                }
                 if (temp.temp >= 27) {
                     _this.localNot.schedule([
                         { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
@@ -227,6 +236,9 @@ var TempPage = /** @class */ (function () {
                 _this.lastTemp3 = temp.temp;
             });
         });
+        setTimeout(function () {
+            console.log(Math.round((_this.lastTemp + _this.lastTemp2 + _this.lastTemp3) / 3));
+        }, 1000);
     }
     ;
     ;
@@ -234,7 +246,7 @@ var TempPage = /** @class */ (function () {
     };
     TempPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row class="Row">\n\n        <ion-card class="color-card" [ngStyle]="{\'background-color\':cardColor1}">\n          <ion-card-content> \n              <h1 style="font-size: 15vw;">{{lastTemp}}°C</h1>\n              <h1 text-right>Sensor 1</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="color-card" [ngStyle]="{\'background-color\':cardColor2}">\n          <ion-card-content>\n              <h1 style="font-size: 15vw;">{{lastTemp2}}°C</h1>\n              <h1 text-right>Sensor 2</h1>\n          </ion-card-content>\n        </ion-card>\n\n        <ion-card class="color-card" [ngStyle]="{\'background-color\':cardColor3}">\n          <ion-card-content >\n              <h1 style="font-size: 15vw;">{{lastTemp3}}°C</h1>\n              <h1 text-right>Sensor 3</h1>\n          </ion-card-content>\n        </ion-card>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
+            selector: 'page-temp',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/'<ion-content>\n\n  <ion-grid>\n    <ion-row justify-content-around>\n      <ion-col col-12 col-sm>\n\n        <ion-card>\n          <ion-card-content class="color-card">\n            <h1>Temperatura</h1>\n            <h1 style="font-size: 8vw;"><b>{{promedio}}°C</b></h1>\n            <h2>Promedio</h2>\n          </ion-card-content>\n        </ion-card>\n\n        <br>\n\n        <ion-card>\n          <ion-card-content>\n            <div class="s1">\n              <h3>\n                <button class="btn" [ngStyle]="{\'background-color\':cardColor1}" [class.button-disabled]="true"></button>\n                Sensor 1</h3>\n              <h2 style="text-align:right">\n                <b>{{lastTemp}}°C</b>\n              </h2>\n            </div>\n            \n            <div class="s2">\n              <h3>\n                <button class="btn" [ngStyle]="{\'background-color\':cardColor2}" [class.button-disabled]="true"></button>\n                Sensor 2</h3>\n              <h2 style="text-align:right">\n                <b>{{lastTemp2}}°C</b>\n              </h2>\n            </div>\n            <div class="s3">\n              <h3>\n                <button class="btn" [ngStyle]="{\'background-color\':cardColor3}" [class.button-disabled]="true"></button>\n                Sensor 3</h3>\n              <h2 style="text-align:right">\n                <b>{{lastTemp3}}°C</b>\n              </h2>\n            </div>\n          </ion-card-content>\n        </ion-card>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\temp\temp.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _d || Object])
     ], TempPage);
@@ -279,7 +291,12 @@ var NivelPage = /** @class */ (function () {
         this.nivelRef.subscribe(function (dato) {
             dato.map(function (dist) {
                 console.log('Nv: ' + dist.dist);
-                if (dist.dist <= 60) {
+                if (dist.dist <= 30) {
+                    _this.localNot.schedule([
+                        { id: 1, title: 'Nivel estable' }
+                    ]);
+                }
+                else if (dist.dist <= 60) {
                     _this.localNot.schedule([
                         { id: 1, title: 'Nivel 2: Nivel estable del tanque' }
                     ]);
@@ -317,7 +334,7 @@ var NivelPage = /** @class */ (function () {
     };
     NivelPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <br>\n    <h1>{{lastNiv}} cm</h1>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
+            selector: 'page-nivel',template:/*ion-inline-start:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/'<ion-content>\n  <ion-grid>\n    <ion-row justify-content-center> \n      <ion-col col-2>\n        <ion-card class="card1" [ngStyle]="{\'background-color\':lvl1}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card2" [ngStyle]="{\'background-color\':lvl2}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card3" [ngStyle]="{\'background-color\':lvl3}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card4" [ngStyle]="{\'background-color\':lvl4}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n        <ion-card class="card5" [ngStyle]="{\'background-color\':lvl5}">\n          <ion-card-content></ion-card-content>\n        </ion-card>\n      </ion-col>\n      <ion-col col-10>\n        \n      </ion-col>\n      <h1>{{lastNiv}} cm</h1>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"C:\Users\Karla Dufour\Downloads\Nueva carpeta\src\pages\nivel\nivel.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_fire_database__["a" /* AngularFireDatabase */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _d || Object])
     ], NivelPage);

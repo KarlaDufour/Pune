@@ -25703,6 +25703,26 @@ page-login .no-lines .item-inner {
   background-color: #03034e;
 }
 
+page-temp {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .color-card {
-  background-color: #ddd453;
+  background: -webkit-gradient(linear, left bottom, left top, from(#d1d352dc), to(#d39357));
+  background: linear-gradient(bottom, #d1d352dc, #d39357);
+}
+
+.btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: auto;
+}
+
+.s1 {
+  vertical-align: baseline;
+}
+
+ion-card {
+  border-radius: 20px;
 }

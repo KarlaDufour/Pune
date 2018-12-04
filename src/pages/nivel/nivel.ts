@@ -28,6 +28,11 @@ export class NivelPage {
     this.nivelRef.subscribe(dato => {
       dato.map(dist => {
         console.log('Nv: ' + dist.dist);
+        if(dist.dist <= 30){
+          this.localNot.schedule([
+            {id: 1, title: 'Nivel estable'}
+        ]);
+        }else
         if (dist.dist <= 60) {
           this.localNot.schedule([
             {id: 1, title: 'Nivel 2: Nivel estable del tanque'}

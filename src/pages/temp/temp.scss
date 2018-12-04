@@ -1,7 +1,22 @@
 page-temp {
-
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
+$second: #d39357;
+$first: #d1d352dc;
+
 .color-card{
-    background-color: rgb(221, 212, 83);
+    background: linear-gradient(bottom, $first, $second)
+}
+.btn{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: auto;
+}
+.s1{
+    vertical-align: baseline;
+}
+ion-card {
+    border-radius: 20px;
 }

@@ -1,29 +1,50 @@
 <ion-content>
 
   <ion-grid>
-    <ion-row class="Row">
+    <ion-row justify-content-around>
+      <ion-col col-12 col-sm>
 
-        <ion-card class="color-card" [ngStyle]="{'background-color':cardColor1}">
-          <ion-card-content> 
-              <h1 style="font-size: 15vw;">{{lastTemp}}°C</h1>
-              <h1 text-right>Sensor 1</h1>
+        <ion-card>
+          <ion-card-content class="color-card">
+            <h1>Temperatura</h1>
+            <h1 style="font-size: 8vw;"><b>{{promedio}}°C</b></h1>
+            <h2>Promedio</h2>
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="color-card" [ngStyle]="{'background-color':cardColor2}">
+        <br>
+
+        <ion-card>
           <ion-card-content>
-              <h1 style="font-size: 15vw;">{{lastTemp2}}°C</h1>
-              <h1 text-right>Sensor 2</h1>
+            <div class="s1">
+              <h3>
+                <button class="btn" [ngStyle]="{'background-color':cardColor1}" [class.button-disabled]="true"></button>
+                Sensor 1</h3>
+              <h2 style="text-align:right">
+                <b>{{lastTemp}}°C</b>
+              </h2>
+            </div>
+            
+            <div class="s2">
+              <h3>
+                <button class="btn" [ngStyle]="{'background-color':cardColor2}" [class.button-disabled]="true"></button>
+                Sensor 2</h3>
+              <h2 style="text-align:right">
+                <b>{{lastTemp2}}°C</b>
+              </h2>
+            </div>
+            <div class="s3">
+              <h3>
+                <button class="btn" [ngStyle]="{'background-color':cardColor3}" [class.button-disabled]="true"></button>
+                Sensor 3</h3>
+              <h2 style="text-align:right">
+                <b>{{lastTemp3}}°C</b>
+              </h2>
+            </div>
           </ion-card-content>
         </ion-card>
 
-        <ion-card class="color-card" [ngStyle]="{'background-color':cardColor3}">
-          <ion-card-content >
-              <h1 style="font-size: 15vw;">{{lastTemp3}}°C</h1>
-              <h1 text-right>Sensor 3</h1>
-          </ion-card-content>
-        </ion-card>
-
+      </ion-col>
     </ion-row>
   </ion-grid>
 

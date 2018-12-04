@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs-compat';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { last } from 'rxjs-compat/operator/last';
 import { LocalNotifications } from "@ionic-native/local-notifications";
 
 @IonicPage()
@@ -23,6 +22,8 @@ export class TempPage {
   cardColor1;
   cardColor2;
   cardColor3;
+
+  promedio;
  
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase, private localNot: LocalNotifications) {
 
@@ -35,6 +36,9 @@ export class TempPage {
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
           this.cardColor1 = "#99FFFF";
+        }
+        if(temp.temp >= 10){
+          this.cardColor1 = "#DDD453";
         }
         if (temp.temp >= 27){
           this.localNot.schedule([
@@ -63,6 +67,10 @@ export class TempPage {
           ]);
           this.cardColor2 = "#99FFFF";
         }
+        if(temp.temp >= 10){
+          this.cardColor2 = "#DDD453";
+        }
+
         if (temp.temp >= 27){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp}
@@ -90,6 +98,9 @@ export class TempPage {
           ]);
           this.cardColor3 = "#99FFFF";
         }
+        if(temp.temp >= 10){
+          this.cardColor3 = "#DDD453";
+        }
         if (temp.temp >= 27){
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp}
@@ -105,6 +116,10 @@ export class TempPage {
         this.lastTemp3 = temp.temp;
       });
     });
+
+    setTimeout(() => {
+      console.log(Math.round((this.lastTemp + this.lastTemp2 + this.lastTemp3) / 3));
+    }, 1000);
 
   }
 
