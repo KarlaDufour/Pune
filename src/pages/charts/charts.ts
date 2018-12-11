@@ -2,7 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs-compat';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
+
+
+/**
+ * Generated class for the ChartsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -14,42 +22,29 @@ export class ChartsPage {
 
   barChart: any;
   tempRef: Observable<any[]>;
-  tempRef2: Observable<any[]>;
-  tempRef3: Observable<any[]>;
 
   labels: any[] = [];
-
   data: any[] = [];
-
   day: any[] = [];
-  days: any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
+    this.tempRef = this.angularDB.list('sensor', ref => ref.orderByKey().limitToLast(5)).valueChanges();
 
-    this.tempRef = this.angularDB.list('sensor', ref => ref.orderByKey().limitToLast(10)).valueChanges();
     this.tempRef.subscribe(dato => {
       this.data = [];
       this.labels = [];
       dato.map(temp => {
-        this.labels.push(temp.time);
+        this.labels.push(temp.time)
         this.data.push(temp.temp);
-
         this.day = (temp.date);
       });
       this.basicChart(this.labels, this.data);
     });
-
-    this.tempRef = this.angularDB.list('sensor', ref => ref.orderByChild('date')).valueChanges();
-    this.tempRef.subscribe(dato => {
-      this.days = dato;
-      
-        dato.indexOf(actions => {
-          console.log(actions.date)
-        })
-
-    })
+    console.log(this.labels);
+    console.log(this.data);
 
   }
+
 
   basicChart(labels, data) {
 
@@ -57,29 +52,29 @@ export class ChartsPage {
 
       type: 'line',
       responsive: true,
-
       data: {
         labels: labels,
         datasets: [{
+
           data: data,
           backgroundColor: [
             'transparent',
           ],
           borderColor: [
-            'rgb(65, 139, 223)'
+            'rgba(255,99,132,1)'
+
           ],
           borderWidth: 2
-        }],
+        }]
       },
-
       options: {
-        legend: {
+        legend:{
           display: false,
         },
         scales: {
           xAxes: [{
             scaleLabel: {
-              display: true,
+              display:true,
             },
             ticks: {
               beginAtZero: true,
@@ -87,9 +82,9 @@ export class ChartsPage {
           }],
           yAxes: [{
             scaleLabel: {
-              display: true,
+              display:true,
             },
-            ticks: {
+            ticks:{
               beginAtZero: true,
               max: 40,
               min: 5,

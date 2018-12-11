@@ -41,7 +41,6 @@
     "firebase": "^5.5.9",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
-    "ng2-charts": "^1.6.0",
     "promise-polyfill": "^8.1.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
