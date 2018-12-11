@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ 
+  <ion-card>
+  <ion-card-header style="text-align:center;">
+   <h1>Temperatura día:</h1>
+   <h2>{{day}}</h2>
+  </ion-card-header>
+  
+  <ion-card-content>
+      <canvas #barCanvas></canvas>        
+  </ion-card-content>
+
+  <ion-item>
+    <ion-label>Día</ion-label>
+    <ion-select [(ngModel)]="dayS1" >
+      <ion-option value="sen1-d" *ngFor="let days of days">{{days.date}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-card>
+  
+</ion-content>

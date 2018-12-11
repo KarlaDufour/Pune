@@ -23,6 +23,10 @@ export class ConfigPage {
     console.log('ionViewDidLoad ConfigPage');
   }
 
+  verGraficas(){
+    this.navCtrl.push('ChartsPage');
+  }
+
   CloseSesion(){
     const confirm = this.alertCtrl.create({
       title: 'Cerrar Sesión',
