@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PresionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 import { AngularFireDatabase } from '@angular/fire/database';
 import { LocalNotifications } from "@ionic-native/local-notifications";
 import { Observable } from 'rxjs-compat';
@@ -19,7 +12,6 @@ import { AlertController } from 'ionic-angular';
 })
 export class PresionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
   valvula: Observable<any[]>;
   toggleValue: boolean;
   toggleValue2: boolean;
