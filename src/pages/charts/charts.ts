@@ -25,6 +25,7 @@ export class ChartsPage {
 
   labels: any[] = [];
   data: any[] = [];
+  day: any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
     this.tempRef = this.angularDB.list('sensor', ref => ref.orderByKey().limitToLast(5)).valueChanges();
@@ -33,8 +34,9 @@ export class ChartsPage {
       this.data = [];
       this.labels = [];
       dato.map(temp => {
-        this.labels.push(temp.date + ' ' + temp.time)
+        this.labels.push(temp.time)
         this.data.push(temp.temp);
+        this.day = (temp.date);
       });
       this.basicChart(this.labels, this.data);
     });
@@ -50,34 +52,42 @@ export class ChartsPage {
 
       type: 'line',
       responsive: true,
-      aspectRatio: 10,
       data: {
         labels: labels,
         datasets: [{
 
           data: data,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
+            'transparent',
           ],
           borderColor: [
             'rgba(255,99,132,1)'
 
           ],
-          borderWidth: 1
+          borderWidth: 2
         }]
       },
       options: {
+        legend:{
+          display: false,
+        },
         scales: {
           xAxes: [{
+            scaleLabel: {
+              display:true,
+            },
             ticks: {
               beginAtZero: true,
-              display:false
             }
           }],
           yAxes: [{
-            ticks: {
+            scaleLabel: {
+              display:true,
+            },
+            ticks:{
               beginAtZero: true,
-              display:false
+              max: 40,
+              min: 5,
             }
           }]
         }
