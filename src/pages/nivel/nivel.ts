@@ -62,6 +62,9 @@ export class NivelPage {
           this.lvl2 = "#C0C0C0"
           this.lvl3 = "#C0C0C0"
           this.lvl4 = "#C0C0C0"
+        }else
+        if(dist.dist > 150){
+          console.log("error en el sensor")
         }
         this.lastNiv = dist.dist;
       });

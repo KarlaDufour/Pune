@@ -129,7 +129,6 @@ export class TempPage {
       });
     });
 
-
   }
 
   calculateAverageTemp(t1, t2, t3) {
