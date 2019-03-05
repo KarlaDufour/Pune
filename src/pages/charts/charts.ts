@@ -3,14 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs-compat';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Chart } from 'chart.js';
-
-
-/**
- * Generated class for the ChartsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @IonicPage()
 @Component({
@@ -45,6 +38,14 @@ export class ChartsPage {
 
   }
 
+  ionViewDidLoad() {
+    /*this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    this.screenOrientation.onChange().subscribe(
+      () => {
+          console.log("Orientation Changed");
+      }
+    );*/
+  }
 
   basicChart(labels, data) {
 
@@ -86,8 +87,8 @@ export class ChartsPage {
             },
             ticks:{
               beginAtZero: true,
-              max: 40,
-              min: 5,
+              max: 30,
+              min: 10,
             }
           }]
         }

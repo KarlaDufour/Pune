@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Observable } from 'rxjs-compat';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { LocalNotifications } from "@ionic-native/local-notifications";
+import { Observable } from 'rxjs-compat';
 
 @IonicPage()
 @Component({
@@ -27,9 +27,8 @@ export class TempPage {
   promedio: number;
   assetTemp: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase, private localNot: LocalNotifications) {
-
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase,
+    private localNot: LocalNotifications) {
 
   }
 
@@ -37,28 +36,35 @@ export class TempPage {
     this.tempRef = this.angularDB.list('sensor', ref => ref.limitToLast(1)).valueChanges();
     this.tempRef.subscribe(dato => {
       console.log(dato);
-      
+      var savenot1 = this.angularDB.list('notificaciones/sensor1');
+
       dato.map(temp => {
         console.log('S1: ' + temp.temp);
+        var data = { 'Temperatura': 'Temperatura a ' + temp.temp + '°C', 'Dia': temp.date };
+
         if (temp.temp <= 9) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
+          savenot1.push(data);
           this.cardColor1 = "tempDown";
         }
         if (temp.temp >= 10) {
+          savenot1.push(data);
           this.cardColor1 = "tempOk";
         }
         if (temp.temp >= 27) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
+          savenot1.push(data);
           this.cardColor1 = "tempWarning"
         }
         if (temp.temp >= 30) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
           ]);
+          savenot1.push(data);
           this.cardColor1 = "tempUp";
         }
         this.lastTemp = temp.temp;
@@ -68,16 +74,22 @@ export class TempPage {
 
     this.tempRef2 = this.angularDB.list('sensor2', ref => ref.limitToLast(1)).valueChanges();
     this.tempRef2.subscribe(dato => {
+
       dato.map(temp => {
         console.log('S2: ' + temp.temp);
+        var savenot2 = this.angularDB.list('notificaciones/sensor2');
+        var data = { 'Temperatura': 'Temperatura a ' + temp.temp + '°C', 'Dia': temp.date };
+
         this.lastTemp2 = temp.temp;
         if (temp.temp <= 9) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
+          savenot2.push(data);
           this.cardColor2 = "tempDown";
         }
         if (temp.temp >= 10) {
+          savenot2.push(data);
           this.cardColor2 = "tempOk";
         }
 
@@ -85,12 +97,14 @@ export class TempPage {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
+          savenot2.push(data);
           this.cardColor2 = "tempWarning"
         }
         if (temp.temp >= 30) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
           ]);
+          savenot2.push(data);
           this.cardColor2 = "tempUp";
         }
         this.lastTemp2 = temp.temp;
@@ -102,26 +116,33 @@ export class TempPage {
     this.tempRef3.subscribe(dato => {
       dato.map(temp => {
         console.log('S3: ' + temp.temp);
+        var savenot3 = this.angularDB.list('notificaciones/sensor3');
+        var data = { 'Temperatura': 'Temperatura a ' + temp.temp + '°C', 'Dia': temp.date };
+
         this.lastTemp3 = temp.temp;
         if (temp.temp <= 9) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
+          savenot3.push(data);
           this.cardColor3 = "tempDown";
         }
         if (temp.temp >= 10) {
+          savenot3.push(data);
           this.cardColor3 = "tempOk";
         }
         if (temp.temp >= 27) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! La temperatura se encuentra a ' + temp.temp }
           ]);
+          savenot3.push(data);
           this.cardColor3 = "tempWarning"
         }
         if (temp.temp >= 30) {
           this.localNot.schedule([
             { id: 1, title: 'ALERTA! Temperatura a ' + temp.temp }
           ]);
+          savenot3.push(data);
           this.cardColor3 = "tempUp";
         }
         this.lastTemp3 = temp.temp;
@@ -133,6 +154,7 @@ export class TempPage {
 
   calculateAverageTemp(t1, t2, t3) {
     this.promedio = Math.round((t1 + t2 + t3) / 3);
+    console.log(this.promedio);
 
     if (this.promedio <= 9) {
       this.cardColorProm = "tempPromDown";
@@ -150,10 +172,18 @@ export class TempPage {
       this.cardColorProm = "tempPromUp";
       this.assetTemp = "tempUp.png";
     }
+
+    var prueba = this.angularDB.object('valvula/prueba2')
+    if (this.promedio >= 23) {
+      prueba.set('1')
+    } else
+      prueba.set('0')
+
   }
 
   ionViewDidLoad() {
-   this.initData();
+    this.initData();
+
   }
 
 

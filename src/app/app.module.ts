@@ -16,6 +16,9 @@ import { HomePage } from '../pages/home/home';
 import { TempPage } from '../pages/temp/temp';
 import { NivelPage } from '../pages/nivel/nivel';
 import { PresionPage } from '../pages/presion/presion';
+/*import { ChartsPage } from '../pages/charts/charts';
+import { NotificationsPage } from '../pages/notifications/notifications';*/
+
 
 export const config  ={
   apiKey: "AIzaSyB4vEP-vHOlmILDK8-tG6J5RDvUgCFeGHk",

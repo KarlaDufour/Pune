@@ -64,6 +64,7 @@ export class NivelPage {
           this.lvl4 = "#C0C0C0"
         }else
         if(dist.dist > 150){
+          this.lastNiv = "Error en la medición"
           console.log("error en el sensor")
         }
         this.lastNiv = dist.dist;
@@ -73,6 +74,7 @@ export class NivelPage {
   }
 
   ionViewDidLoad() {
+    
   }
 
 }
