@@ -2,13 +2,13 @@
   <br>
     <h1>Activación manual</h1>
   <ion-item>
-    <ion-label>{{checked ? "Activado" : "Valvula 1 desactivada"}}</ion-label>
+    <ion-label>{{checked ? "Activado" : "Valvula llenado desactivada"}}</ion-label>
     <ion-toggle color="secondary" 
                 [(ngModel)]="toggleValue"
                 (ionChange)="upVal1()"></ion-toggle>
   </ion-item>
   <ion-item>
-    <ion-label>{{checked2 ? "Valvula 2 activada" : "Valvula 2 desactivada"}}</ion-label>
+    <ion-label>{{checked2 ? "Valvula vaciado activada" : "Valvula vaciado desactivada"}}</ion-label>
     <ion-toggle color= "warning"
                 [(ngModel)]="toggleValue2"
                 (ionChange)="upVal2()"></ion-toggle>

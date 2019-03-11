@@ -15,4 +15,7 @@ export class NotificationsPage {
     console.log('ionViewDidLoad NotificationsPage');
   }
 
+  Nots1(){
+    this.navCtrl.push('Ns1Page')
+  }
 }
