@@ -21,9 +21,12 @@ export class Ns1Page {
     this.datos.subscribe(actions =>{
       this.dato = actions
       actions.forEach(action => {
-        console.log(action.payload.key);
-      });
-    })
+        //temp: action.temp
+        //temp: action.payload.val().temp,
+
+        console.log(action.temp);
+      }); })
+
   }
 
   ionViewDidLoad() {
