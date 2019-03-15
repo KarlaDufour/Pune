@@ -1,0 +1,26 @@
+.card1, .card2, .card3, .card4, .card5 {
+  height: 70px;
+  padding-bottom: 80px;
+}
+
+.card1 {
+  background-color: #a1a1fb;
+}
+
+.card2 {
+  background-color: #5757f9;
+}
+
+.card3 {
+  background-color: #0e0ef6;
+}
+
+.card4 {
+  background-color: #0707b0;
+}
+
+.card5 {
+  background-color: #03034e;
+}
+
+/*# sourceMappingURL=nivel.css.map */
