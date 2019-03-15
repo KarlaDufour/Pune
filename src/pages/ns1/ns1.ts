@@ -24,7 +24,7 @@ export class Ns1Page {
         //temp: action.temp
         //temp: action.payload.val().temp,
 
-        console.log(action.temp);
+        console.log(action);
       }); })
 
   }
