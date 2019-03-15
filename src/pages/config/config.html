@@ -8,19 +8,12 @@
 
 
 <ion-content>
-
   <ion-list>
-    <button ion-item>
+    <button ion-item (click)="verGraficas()">
       <h2>Temperatura</h2>
     </button>
-    <button ion-item>
-      <h2>Nivel</h2>
-    </button>
-    <button ion-item>
+    <button ion-item (click)="verNots()">
       <h2>Notificaciones</h2>
-    </button>
-    <button ion-item (click)="verGraficas()">
-      <h2>Graficas</h2>
     </button>
     <button ion-item>
       <h2>Ayuda</h2>
@@ -32,9 +25,8 @@
 
   <ion-list>
     <ion-list-header>
-      Inicio de Sesión
+      Sesión
     </ion-list-header>
     <button ion-item style="color:cadetblue" (click)="CloseSesion()">Cerrar Sesión</button>
   </ion-list>
-
 </ion-content>

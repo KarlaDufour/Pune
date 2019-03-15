@@ -25,7 +25,8 @@ export class HomePage {
   ionViewDidLoad(){
     console.log('ionViewDidLoad HomePage');
   }
-  openModal(){
+  
+  configPage(){
     this.navCtrl.push('ConfigPage');
   }
 }

@@ -54,36 +54,41 @@ export class PresionPage {
 
   upVal1() {
     var prueba = this.angularDB.object('valvula/prueba');
+    var savV1 = this.angularDB.list('notificaciones/proceso');
 
     if (this.toggleValue == true) {
       prueba.set('1')
       this.localNot.schedule([
-        { title: 'Se ha abierto la valvula' }
+        { title: 'Se ha abierto la valvula de llenado' }
       ])
-    }
-    else
+      savV1.push('Se ha abierto la valvula de llenado')
+    }else {
       prueba.set('0')
-    this.toggleValue = false;
-    this.localNot.schedule([{
-      title: 'Se ha cerrado la valvula'
-    }]);
-
+      this.toggleValue = false;
+      this.localNot.schedule([{
+        title: 'Se ha cerrado la valvula de llenado'
+      }]);
+      savV1.push('Se ha cerrado la valvula de llenado')
+    }
   }
 
   upVal2() {
     var prueba = this.angularDB.object('valvula/prueba2');
+    var savV1 = this.angularDB.list('notificaciones/proceso');
 
     if (this.toggleValue2 == true) {
       prueba.set('1')
       this.localNot.schedule([
-        { title: 'Se ha abierto la valvula' }
+        { title: 'Se ha abierto la valvula de vaciado' }
       ])
-    }
-    else
+      savV1.push('Se ha abierto la valvula de vaciado')
+    }else {
       prueba.set('0')
-    this.toggleValue2 = false;
-    this.localNot.schedule([{
-      title: 'Se ha cerrado la valvula'
-    }])
+      this.toggleValue2 = false;
+      this.localNot.schedule([{
+        title: 'Se ha cerrado la valvula de vaciado'
+      }])
+      savV1.push('Se ha cerrado la valvula de vaciado')
+    }
   }
 }

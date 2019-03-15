@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { LoginPage } from '../login/login'
-
-/**
- * Generated class for the ConfigPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -16,7 +9,16 @@ import { LoginPage } from '../login/login'
 })
 export class ConfigPage {
 
+  items: any= [];
+  itemExpandHeight: number = 4;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    this.items=[
+      {expanded: 'Sensor 1'},
+      {expanded: 'Sensor 2'},
+      {expanded: 'Sensor 3'},
+      {expanded: 'Control de proceso'}
+    ]
   }
 
   ionViewDidLoad() {
@@ -25,6 +27,10 @@ export class ConfigPage {
 
   verGraficas(){
     this.navCtrl.push('ChartsPage');
+  }
+
+  verNots(){
+    this.navCtrl.push('NotificationsPage');
   }
 
   CloseSesion(){

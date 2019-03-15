@@ -1,0 +1,21 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{HELLO}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let dato of datos">
+    <ion-card-header>
+      {{dato.temp}}
+    </ion-card-header>
+    <ion-card-content>
+      <h3>{{dato.date}}</h3>
+      <h3>{{dato.time}}</h3>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

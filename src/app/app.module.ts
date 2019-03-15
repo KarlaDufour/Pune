@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule} from '@angular/http';
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -16,6 +17,10 @@ import { HomePage } from '../pages/home/home';
 import { TempPage } from '../pages/temp/temp';
 import { NivelPage } from '../pages/nivel/nivel';
 import { PresionPage } from '../pages/presion/presion';
+/*import { ChartsPage } from '../pages/charts/charts';
+import { NotificationsPage } from '../pages/notifications/notifications';*/
+
+import { Nots1Component } from '../components/nots1/nots1';
 
 export const config  ={
   apiKey: "AIzaSyB4vEP-vHOlmILDK8-tG6J5RDvUgCFeGHk",
@@ -33,10 +38,12 @@ export const config  ={
     TempPage,
     NivelPage,
     PresionPage,
-    LoginPage
+    LoginPage,
+    Nots1Component
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,

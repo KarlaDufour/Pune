@@ -14,7 +14,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public afAuth: AngularFireAuth, public loadingCtrl: LoadingController) {
     this.LoginForm = new FormGroup({
       correo: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      contra: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
+      contra: new FormControl('', Validators.compose([Validators.required]))
     })
   }
 
@@ -35,6 +35,10 @@ export class LoginPage {
         lastLogin: result.user.metadata.lastSignInTime
       }
       this.navCtrl.setRoot(HomePage, data);
-    })
+    })/*
+    if(email == 'a@a.a' || pass == 'a'){
+      this.navCtrl.setRoot(HomePage)
+    }*/
+
   }
 }
