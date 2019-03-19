@@ -1,19 +1,41 @@
 <ion-content padding>
-  <br>
-    <h1>Activación manual</h1>
-  <ion-item>
-    <ion-label>{{checked ? "Activado" : "Valvula llenado desactivada"}}</ion-label>
-    <ion-toggle color="secondary" 
-                [(ngModel)]="toggleValue"
-                (ionChange)="upVal1()"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label>{{checked2 ? "Valvula vaciado activada" : "Valvula vaciado desactivada"}}</ion-label>
-    <ion-toggle color= "warning"
-                [(ngModel)]="toggleValue2"
-                (ionChange)="upVal2()"></ion-toggle>
-  </ion-item>
+  <ion-card>
+    <ion-card-content justify-content-around>
+      <div class="wrapper">
+        <div class="position">
+          <img [src]="'assets/imgs/'+assetVal">
+          <h3>Valvula de llenado</h3>
+          <h4>{{estado}}</h4>
+        </div>
+        <div class="position">
+          <img [src]="'assets/imgs/'+assetVal2">
+          <h3>Valvula de vaciado</h3>
+          <h4>{{estado2}}</h4>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
-  <p *ngIf="toggleValue">Enable</p>
+  <br>
+
+  <ion-card justify-content-around>
+    <ion-card-header>
+      <span>Activación manual</span>
+      <ion-icon name="key" style="float: right;" (click)="en()"></ion-icon>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card justify-content-around [hidden]=show>
+    <ion-card-content >
+      <ion-item-divider>
+        <ion-label>Valvula llenado</ion-label>
+        <ion-toggle color="secondary" [(ngModel)]="toggleValue" (ionChange)="upVal1()"></ion-toggle>
+      </ion-item-divider>
+      <ion-item-divider>
+        <ion-label>Valvula vaciado</ion-label>
+        <ion-toggle color="secondary" [(ngModel)]="toggleValue2" (ionChange)="upVal2()"></ion-toggle>
+      </ion-item-divider>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
