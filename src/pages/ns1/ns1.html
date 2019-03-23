@@ -11,7 +11,7 @@
 <ion-content padding>
   <ion-card *ngFor="let dato of datos?.slice().reverse()">
     <ion-card-header>
-      <h2>Temperatura a {{dato.payload.val().temp}}°C</h2>
+      <h2>{{dato.payload.val().temp}}</h2>
     </ion-card-header>
     <ion-card-content style="justify-content: space-around">
       <h3>Día: {{dato.payload.val().date}}</h3>

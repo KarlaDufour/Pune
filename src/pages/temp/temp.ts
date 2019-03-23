@@ -40,7 +40,7 @@ export class TempPage {
 
       dato.map(temp => {
         console.log('S1: ' + temp.temp);
-        var data = { 'Temperatura': 'Temperatura a ' + temp.temp + '°C', 'Dia': temp.date };
+        var data = { 'temp': 'Temperatura a ' + temp.temp + '°C', 'date': temp.date, 'time': temp.time };
 
         if (temp.temp <= 9) {
           this.localNot.schedule([
@@ -78,7 +78,7 @@ export class TempPage {
       dato.map(temp => {
         console.log('S2: ' + temp.temp);
         var savenot2 = this.angularDB.list('notificaciones/sensor2');
-        var data = { 'Temperatura': 'Temperatura a ' + temp.temp + '°C', 'Dia': temp.date };
+        var data = { 'temp': 'Temperatura a ' + temp.temp + '°C', 'date': temp.date, 'time': temp.time };
 
         this.lastTemp2 = temp.temp;
         if (temp.temp <= 9) {
@@ -117,7 +117,7 @@ export class TempPage {
       dato.map(temp => {
         console.log('S3: ' + temp.temp);
         var savenot3 = this.angularDB.list('notificaciones/sensor3');
-        var data = { 'Temperatura': 'Temperatura a ' + temp.temp + '°C', 'Dia': temp.date };
+        var data = { 'temp': 'Temperatura a ' + temp.temp + '°C', 'date': temp.date, 'time': temp.time };
 
         this.lastTemp3 = temp.temp;
         if (temp.temp <= 9) {
@@ -185,6 +185,5 @@ export class TempPage {
     this.initData();
 
   }
-
 
 }

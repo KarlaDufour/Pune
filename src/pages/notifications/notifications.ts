@@ -18,4 +18,10 @@ export class NotificationsPage {
   Nots1(){
     this.navCtrl.push('Ns1Page')
   }
+  Nots2(){
+    this.navCtrl.push('Ns2Page')
+  }
+  Nots3(){
+    this.navCtrl.push('Ns3Page')
+  }
 }

@@ -16,7 +16,7 @@ export class Ns1Page {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
     
-    this.datost = angularDB.list('sensor', ref => ref.orderByChild('time')).snapshotChanges();
+    this.datost = angularDB.list('notificaciones/sensor1', ref => ref.orderByChild('time')).snapshotChanges();
 
     this.datost.subscribe(actions =>{
       this.datos = actions

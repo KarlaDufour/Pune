@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the Ns3Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs-compat';
+import { AngularFireDatabase } from '@angular/fire/database'
 
 @IonicPage()
 @Component({
@@ -15,7 +10,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Ns3Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  datos: any;
+  datost: Observable<any[]>;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
+    this.datost = angularDB.list('notificaciones/sensor3', ref => ref.orderByChild('time')).snapshotChanges();
+
+    this.datost.subscribe(actions =>{
+      this.datos = actions
+      actions.forEach(action => {
+        console.log(action.payload.key);
+      }); })
+
   }
 
   ionViewDidLoad() {
