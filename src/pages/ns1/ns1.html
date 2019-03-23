@@ -2,20 +2,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{HELLO}}</ion-title>
+    <ion-title>Notificaciones sensor 1</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-card *ngFor="let dato of datos">
+  <ion-card *ngFor="let dato of datos?.slice().reverse()">
     <ion-card-header>
-      {{dato.temp}}
+      <h2>Temperatura a {{dato.payload.val().temp}}°C</h2>
     </ion-card-header>
-    <ion-card-content>
-      <h3>{{dato.date}}</h3>
-      <h3>{{dato.time}}</h3>
+    <ion-card-content style="justify-content: space-around">
+      <h3>Día: {{dato.payload.val().date}}</h3>
+      <h3>Hora: {{dato.payload.val().time}}</h3>
     </ion-card-content>
   </ion-card>
 </ion-content>

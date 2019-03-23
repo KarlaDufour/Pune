@@ -11,20 +11,17 @@ import { AngularFireDatabase } from '@angular/fire/database'
 })
 export class Ns1Page {
 
-  dato: any;
-  datos: Observable<any[]>;
+  datos: any;
+  datost: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
     
-    this.datos = angularDB.list('sensor').snapshotChanges();
+    this.datost = angularDB.list('sensor', ref => ref.orderByChild('time')).snapshotChanges();
 
-    this.datos.subscribe(actions =>{
-      this.dato = actions
+    this.datost.subscribe(actions =>{
+      this.datos = actions
       actions.forEach(action => {
-        //temp: action.temp
-        //temp: action.payload.val().temp,
-
-        console.log(action);
+        console.log(action.payload.key);
       }); })
 
   }

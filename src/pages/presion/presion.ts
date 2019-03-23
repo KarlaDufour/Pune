@@ -12,7 +12,9 @@ import { AlertController } from 'ionic-angular';
 })
 export class PresionPage {
 
-  valvula: Observable<any[]>;
+  estado: Observable<any[]>;
+  estado2: Observable<any[]>;
+
   toggleValue: boolean;
   toggleValue2: boolean;
 
@@ -27,36 +29,14 @@ export class PresionPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PresionPage');
-
+    this.initImg();
   }
 
-  /*confirm() {
-    var prueba = this.angularDB.object('valvula/prueba');
+  initImg(){
+    var estado1 = this.angularDB.list('valvula/prueba');
 
-    const alert = this.alertCtrl.create({
-      message: "Confirmar acción",
-      buttons: [{
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => {
-          console.log("close");
-        }
-      },
-      {
-        text: 'Okay',
-        handler: () => {
-          if (this.toggleValue == true) {
-            prueba.set('1')
-          }
-          if(this.toggleValue == false){
-            prueba.set('0')
-          }
-        }
-      }
-      ]
-    });
-    alert.present();
-  }*/
+    console.log(estado1);
+  }
 
   en(){
     let prompt = this.alertCtrl.create({
@@ -145,4 +125,5 @@ export class PresionPage {
       savV1.push('Se ha cerrado la valvula de vaciado manualmente')
     }
   }
+
 }
