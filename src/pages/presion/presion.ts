@@ -4,6 +4,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { LocalNotifications } from "@ionic-native/local-notifications";
 import { Observable } from 'rxjs-compat';
 import { AlertController } from 'ionic-angular';
+import { getLocaleTimeFormat } from '@angular/common';
+import { t } from '@angular/core/src/render3';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @IonicPage()
 @Component({
@@ -12,19 +15,27 @@ import { AlertController } from 'ionic-angular';
 })
 export class PresionPage {
 
-  estado: Observable<any[]>;
-  estado2: Observable<any[]>;
+  estadoIm: Observable<any[]>;
+  estado2Im: Observable<any[]>;
 
   toggleValue: boolean;
   toggleValue2: boolean;
+
+  estado: any = '--';
+  estado2: any = '--';
 
   assetVal: string;
   assetVal2: string;
 
   show = true;
+  currentDate: string = new Date().toLocaleDateString();
+
+  formatDate;
+  formatTime;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase,
     private localNot: LocalNotifications, public alertCtrl: AlertController) {
+      this.getformatDate();
   }
 
   ionViewDidLoad() {
@@ -32,10 +43,43 @@ export class PresionPage {
     this.initImg();
   }
 
-  initImg(){
-    var estado1 = this.angularDB.list('valvula/prueba');
+  getformatDate(){
+    var obj = new Date();
 
-    console.log(estado1);
+    var year = obj.getFullYear().toString()
+    var month = obj.getMonth().toString()
+    var day = obj.getDate().toString()
+    var hour = obj.getHours().toString()
+    var minutes = obj.getMinutes().toString()
+    
+    this.formatDate = day + '/' + month + '/' + year;
+    this.formatTime = hour + ':' + minutes;
+  }
+
+  initImg(){
+    this.estadoIm = this.angularDB.list('valvula').valueChanges();
+    this.estadoIm.subscribe(dato =>{
+      console.log(dato);
+      dato.map(val =>{
+        
+        if(val.prueba1 == 1){
+          this.assetVal = "success.png";
+          this.estado = "Abierta"
+        }
+        if(val.prueba1 == 0){
+          this.assetVal="error.png"
+          this.estado = "Cerrada"
+        }
+        if(val.prueba2 == 1){
+          this.assetVal = "success.png";
+          this.estado = "Abierta"
+        }
+        if(val.prueba2 == 0){
+          this.assetVal="error.png"
+          this.estado = "Cerrada"
+        }
+      });
+  });
   }
 
   en(){
@@ -79,20 +123,21 @@ export class PresionPage {
   }
 
   upVal1() {
-    var prueba = this.angularDB.list('valvula/');
+    var prueba = this.angularDB.list('valvula/prueba');
     var savV1 = this.angularDB.list('notificaciones/proceso');
 
-    console.log(prueba);
+    var data1 = {'notif': 'Se ha abierto la valvula de llenado manualmente', 'date': this.formatDate, 'time': this.formatTime};
+    var data2 = {'notif': 'Se ha cerrado la valvula de llenado manualmente', 'date': this.formatDate, 'time': this.formatTime};
 
     if (this.toggleValue == true) {
-      prueba.set('prueba', '1')
+      prueba.set('prueba1', '1')
       this.localNot.schedule([
         { title: 'Se ha abierto la valvula de llenado manualmente' }
       ])
       this.assetVal = "success.png";
-      savV1.push('Se ha abierto la valvula de llenado manualmente')
+      savV1.push(data1)
     }else {
-      prueba.set('prueba', '0')
+      prueba.set('prueba1', '0')
 
       this.assetVal="error.png"
       this.toggleValue = false;
@@ -100,13 +145,16 @@ export class PresionPage {
       this.localNot.schedule([{
         title: 'Se ha cerrado la valvula de llenado manualmente'
       }]);
-      savV1.push('Se ha cerrado la valvula de llenado manualmente')
+      savV1.push(data2)
     }
   }
 
   upVal2() {
-    var prueba = this.angularDB.list('valvula/');
+    var prueba = this.angularDB.list('valvula/prueba');
     var savV1 = this.angularDB.list('notificaciones/proceso');
+
+    var data1 = {'notif': 'Se ha abierto la valvula de vaciado manualmente', 'date': this.formatDate, 'time': this.formatTime};
+    var data2 = {'notif': 'Se ha cerrado la valvula de vaciado manualmente', 'date': this.formatDate, 'time': this.formatTime};
 
     if (this.toggleValue2 == true) {
       prueba.set('prueba2','1')
@@ -114,7 +162,7 @@ export class PresionPage {
         { title: 'Se ha abierto la valvula de vaciado manualmente' }
       ])
       this.assetVal2 = "success.png";
-      savV1.push('Se ha abierto la valvula de vaciado manualmente')
+      savV1.push(data1)
     }else {
       prueba.set('prueba2','0')
       this.assetVal2="error.png"
@@ -122,7 +170,7 @@ export class PresionPage {
       this.localNot.schedule([{
         title: 'Se ha cerrado la valvula de vaciado manualmente'
       }])
-      savV1.push('Se ha cerrado la valvula de vaciado manualmente')
+      savV1.push(data2)
     }
   }
 

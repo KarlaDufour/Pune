@@ -24,4 +24,7 @@ export class NotificationsPage {
   Nots3(){
     this.navCtrl.push('Ns3Page')
   }
+  Pros(){
+    this.navCtrl.push('NpPage')
+  }
 }

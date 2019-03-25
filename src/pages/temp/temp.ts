@@ -183,7 +183,6 @@ export class TempPage {
 
   ionViewDidLoad() {
     this.initData();
-
   }
 
 }
