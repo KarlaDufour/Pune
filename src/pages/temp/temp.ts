@@ -173,12 +173,6 @@ export class TempPage {
       this.assetTemp = "tempUp.png";
     }
 
-    var prueba = this.angularDB.object('valvula/prueba2')
-    if (this.promedio >= 23) {
-      prueba.set('1')
-    } else
-      prueba.set('0')
-
   }
 
   ionViewDidLoad() {

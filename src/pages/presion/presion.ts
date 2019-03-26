@@ -71,12 +71,12 @@ export class PresionPage {
           this.estado = "Cerrada"
         }
         if(val.prueba2 == 1){
-          this.assetVal = "success.png";
-          this.estado = "Abierta"
+          this.assetVal2 = "success.png";
+          this.estado2 = "Abierta"
         }
         if(val.prueba2 == 0){
-          this.assetVal="error.png"
-          this.estado = "Cerrada"
+          this.assetVal2="error.png"
+          this.estado2 = "Cerrada"
         }
       });
   });

@@ -17,10 +17,7 @@ import { HomePage } from '../pages/home/home';
 import { TempPage } from '../pages/temp/temp';
 import { NivelPage } from '../pages/nivel/nivel';
 import { PresionPage } from '../pages/presion/presion';
-/*import { ChartsPage } from '../pages/charts/charts';
-import { NotificationsPage } from '../pages/notifications/notifications';*/
 
-import { Nots1Component } from '../components/nots1/nots1';
 
 export const config  ={
   apiKey: "AIzaSyB4vEP-vHOlmILDK8-tG6J5RDvUgCFeGHk",
@@ -38,8 +35,7 @@ export const config  ={
     TempPage,
     NivelPage,
     PresionPage,
-    LoginPage,
-    Nots1Component
+    LoginPage
   ],
   imports: [
     BrowserModule,

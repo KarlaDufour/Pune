@@ -9,16 +9,8 @@ import { LoginPage } from '../login/login';
 })
 export class ConfigPage {
 
-  items: any= [];
-  itemExpandHeight: number = 4;
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    this.items=[
-      {expanded: 'Sensor 1'},
-      {expanded: 'Sensor 2'},
-      {expanded: 'Sensor 3'},
-      {expanded: 'Control de proceso'}
-    ]
+    
   }
 
   ionViewDidLoad() {

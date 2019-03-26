@@ -13,30 +13,22 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {/*
+    platform.ready().then(() => {
       var currentUser = window.localStorage.getItem("CurrentUser");
       if (currentUser) {
         this.rootPage = HomePage
       } else {
         this.rootPage = LoginPage
-      }*/
+      }
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide()
     });
-
-    this.pages = [
-      {title: 'Temperatura', component: ChartsPage },
-      {title: 'Notificaciones', component: NotificationsPage},
-      {title: 'Ayuda', component: null},
-      {title: 'Informacion', component: null},
-    ];
-
   }
 
   openPage(page){

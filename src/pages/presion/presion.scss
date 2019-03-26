@@ -1,15 +1,13 @@
 page-presion {
-     
-}
-.wrapper{
+  .wrapper{
     display: flex;
-    align-items: center;
     text-align: center;
+    width: 100%;
   }
-.position{
-    display: inline-block;
-    width: 30%;
-    position: relative;
+  .d{
+    width: 50%;
+    padding: 10px;
+  }
 }
 .hide {
   visibility: hidden;
