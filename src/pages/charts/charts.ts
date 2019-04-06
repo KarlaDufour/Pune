@@ -51,7 +51,6 @@ export class ChartsPage {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
 
       type: 'line',
-      responsive: true,
       data: {
         labels: labels,
         datasets: [{
@@ -89,7 +88,7 @@ export class ChartsPage {
             ticks:{
               beginAtZero: true,
               max: 30,
-              min: 10,
+              min: 10
             }
           }]
         }
