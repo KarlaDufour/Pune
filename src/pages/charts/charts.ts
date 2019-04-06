@@ -75,6 +75,7 @@ export class ChartsPage {
           xAxes: [{
             scaleLabel: {
               display:true,
+              labelString: 'Día'
             },
             ticks: {
               beginAtZero: true,
@@ -83,6 +84,7 @@ export class ChartsPage {
           yAxes: [{
             scaleLabel: {
               display:true,
+              labelString: 'Gradosc °C'
             },
             ticks:{
               beginAtZero: true,

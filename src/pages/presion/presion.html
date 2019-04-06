@@ -4,12 +4,12 @@
       <div class="wrapper">
         <div class="d">
           <img [src]="'assets/imgs/'+assetVal">
-          <h3>Valvula de llenado</h3>
+          <h3>Válvula de llenado</h3>
           <h4>{{estado}}</h4>
         </div>
         <div class="d">
           <img [src]="'assets/imgs/'+assetVal2">
-          <h3>Valvula de vaciado</h3>
+          <h3>Válvula de vaciado</h3>
           <h4>{{estado2}}</h4>
         </div>
       </div>
@@ -28,11 +28,11 @@
   <ion-card justify-content-around [hidden]=show>
     <ion-card-content >
       <ion-item-divider>
-        <ion-label>Valvula llenado</ion-label>
+        <ion-label>Válvula llenado</ion-label>
         <ion-toggle color="secondary" [(ngModel)]="toggleValue" (ionChange)="upVal1()"></ion-toggle>
       </ion-item-divider>
       <ion-item-divider>
-        <ion-label>Valvula vaciado</ion-label>
+        <ion-label>Válvula vaciado</ion-label>
         <ion-toggle color="secondary" [(ngModel)]="toggleValue2" (ionChange)="upVal2()"></ion-toggle>
       </ion-item-divider>
     </ion-card-content>

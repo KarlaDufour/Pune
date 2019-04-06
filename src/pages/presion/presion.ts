@@ -65,18 +65,22 @@ export class PresionPage {
         if(val.prueba1 == 1){
           this.assetVal = "success.png";
           this.estado = "Abierta"
+          this.toggleValue = true;
         }
         if(val.prueba1 == 0){
           this.assetVal="error.png"
           this.estado = "Cerrada"
+          this.toggleValue = false;
         }
         if(val.prueba2 == 1){
           this.assetVal2 = "success.png";
           this.estado2 = "Abierta"
+          this.toggleValue2 = true;
         }
         if(val.prueba2 == 0){
           this.assetVal2="error.png"
           this.estado2 = "Cerrada"
+          this.toggleValue2 = false;
         }
       });
   });
@@ -84,8 +88,7 @@ export class PresionPage {
 
   en(){
     let prompt = this.alertCtrl.create({
-      title: 'Login',
-      message: "Ingresar datos para activación manual",
+      title: 'Acceso',
       inputs: [
         {
           name: 'usuario',
@@ -138,10 +141,7 @@ export class PresionPage {
       savV1.push(data1)
     }else {
       prueba.set('prueba1', '0')
-
       this.assetVal="error.png"
-      this.toggleValue = false;
-
       this.localNot.schedule([{
         title: 'Se ha cerrado la valvula de llenado manualmente'
       }]);
@@ -166,7 +166,6 @@ export class PresionPage {
     }else {
       prueba.set('prueba2','0')
       this.assetVal2="error.png"
-      this.toggleValue2 = false;
       this.localNot.schedule([{
         title: 'Se ha cerrado la valvula de vaciado manualmente'
       }])

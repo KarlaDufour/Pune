@@ -14,7 +14,7 @@ export class NpPage {
   datost: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase) {
-    this.datost = angularDB.list('notificaciones/proceso', ref => ref.orderByChild('time')).snapshotChanges();
+    this.datost = angularDB.list('notificaciones/proceso', ref => ref.orderByChild('date')).snapshotChanges();
 
     this.datost.subscribe(actions =>{
       this.datos = actions

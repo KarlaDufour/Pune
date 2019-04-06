@@ -28,13 +28,13 @@ export class ConfigPage {
   CloseSesion(){
     const confirm = this.alertCtrl.create({
       title: 'Cerrar Sesión',
-      message: 'Estás seguro que deseas cerrar sesión',
+      message: '¿Estás seguro que deseas cerrar sesión?',
       buttons: [
         {
-          text: 'Disagree'
+          text: 'Cancelar'
         },
         {
-          text: 'Agree',
+          text: 'Aceptar',
           handler: () => {
             this.navCtrl.push(LoginPage);
           }

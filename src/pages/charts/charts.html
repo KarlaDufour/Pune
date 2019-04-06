@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Graficas y Busqueda</ion-title>
+    <ion-title>Temperatura</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,7 +10,7 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header style="text-align:center;">
-      <h1>Temperatura Sensor 1 día:</h1>
+      <h1>Temperatura sensor 1 día:</h1>
       <h2>{{day}}</h2>
     </ion-card-header>
 
@@ -18,4 +18,15 @@
       <canvas #barCanvas></canvas>
     </ion-card-content>
   </ion-card>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div style="display: block;">
+        <canvas baseChart width="300" height="400" [datasets]="lineChartData" [labels]="lineChartLabels"
+          [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
+
 </ion-content>
