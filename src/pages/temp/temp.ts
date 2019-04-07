@@ -27,9 +27,13 @@ export class TempPage {
   promedio: number;
   assetTemp: string;
 
+  currentDate: string = new Date().toLocaleDateString();
+  formatDate;
+  formatTime;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public angularDB: AngularFireDatabase,
     private localNot: LocalNotifications) {
-
+      this.getformatDate();
   }
 
   initData() {
@@ -152,13 +156,35 @@ export class TempPage {
 
   }
 
+  getformatDate() {
+    var obj = new Date();
+
+    var year = obj.getFullYear().toString()
+    var month = obj.getMonth().toString()
+    var day = obj.getDate().toString()
+    var hour = obj.getHours().toString()
+    var minutes = obj.getMinutes().toString()
+
+    this.formatDate = day + '/' + month + '/' + year;
+    this.formatTime = hour + ':' + minutes;
+  }
+
   calculateAverageTemp(t1, t2, t3) {
+    var prueba = this.angularDB.list('valvula/prueba');
+    var savV1 = this.angularDB.list('notificaciones/proceso');
+
+    var data1 = { 'notif': 'Se ha abierto la válvula de vaciado automaticamente', 'date': this.formatDate, 'time': this.formatTime };
+    var data2 = { 'notif': 'Se ha cerrado la válvula de vaciado automaticamente', 'date': this.formatDate, 'time': this.formatTime };
+
     this.promedio = Math.round((t1 + t2 + t3) / 3);
     console.log(this.promedio);
 
     if (this.promedio <= 9) {
       this.cardColorProm = "tempPromDown";
       this.assetTemp = "tempDown.png";
+      prueba.set('prueba2', '1');
+      savV1.push(data2);
+      prueba.set('prueba1', '0');
     }
     if (this.promedio >= 10) {
       this.cardColorProm = "tempPromOk";
@@ -167,12 +193,17 @@ export class TempPage {
     if (this.promedio >= 27) {
       this.cardColorProm = "tempPromWarning"
       this.assetTemp = "tempWarning.png";
+      prueba.set('prueba2', '1');
+      savV1.push(data2);
+      prueba.set('prueba1', '0');
     }
     if (this.promedio >= 30) {
       this.cardColorProm = "tempPromUp";
       this.assetTemp = "tempUp.png";
+      prueba.set('prueba2', '1');
+      savV1.push(data2);
+      prueba.set('prueba1', '0');
     }
-
   }
 
   ionViewDidLoad() {
